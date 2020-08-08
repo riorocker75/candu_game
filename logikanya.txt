@@ -1,0 +1,12 @@
+ok
+buat dulu perbandingan 
+
+jika nilai inputnya ($nilai[$x])  nya <= nilai atas tidak pernah maka dia termasuk daerah 
+Tidak pernah 
+
+jika nilai inputnya ($nilai[$x]) >= nilai atas dari tidak pernah maka
+dia termasuk daerah terkadang 
+
+
+jika nilai inputnya  ($nilai[$x]) >= nilai atas terkadang maka dia termasuk dari sering
+
