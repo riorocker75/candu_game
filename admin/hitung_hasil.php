@@ -138,7 +138,50 @@
 													<br/>
 													nilai a:<?php echo $a;?> || nilai b: <?php echo $b;?> <br/>
 													Rumus Tidak Pernah<br/>
-													0
+													<br>
+												<!-- disini tulis logika rumus nya -->
+												<!-- variabel start tidak pernah -->
+												<?php
+													$tp1=1;
+													$tp0=0;
+													$nb1= $b+1;
+												?>
+												<!-- bandingkan dulu nilai atas antara 3 dan 2 -->
+
+													<!-- ini pengecekan jika nilai atas 3 -->
+													<?php if($b > 2){ ?>
+														<?php if($nilai[$x] <= 1){
+																$rumusTP1=$tp1;
+																echo $rumusTP1;
+																
+															}elseif($nilai[$x] <= $nb1){
+																$rumusTP2=($nb1 - $nilai[$x]) / ($nb1 - 1);
+																echo $rumusTP2;
+																
+															}elseif($nilai[$x] >= $nb1){
+																$rumusTP0=$tp0;
+																echo $rumusTP0;
+															}
+														?>
+
+
+													<?php }else{?>	
+													<!-- ini pengecekan jika nilai atas 2 -->
+													<?php if($nilai[$x] <= 1){
+																$rumusTP1=$tp1;
+																echo $rumusTP1;
+																
+															}elseif($nilai[$x] <= $nb1){
+																$rumusTP2=($nb1 - $nilai[$x]) / ($nb1 - 10);
+																echo $rumusTP2;
+																
+															}elseif($nilai[$x] >= $nb1){
+																$rumusTP0=$tp0;
+																echo $rumusTP0;
+															}
+														?>
+
+													<?php } ?>
 												</td>
 												<td></td>
 												<td></td>
@@ -159,7 +202,7 @@
 													<br/>
 													nilai a:<?php echo $a;?> || nilai b: <?php echo $b;?> <br/>
 													Rumus terkadang<br/>
-													0
+												
 												</td>
 												<td></td>
 												<td></td>
@@ -180,7 +223,7 @@
 													<br/>
 													nilai a:<?php echo $a;?> || nilai b: <?php echo $b;?> <br/>
 													Sering<br/>
-													0
+												
 												</td>
 												<td></td>
 												<td></td>
@@ -494,7 +537,7 @@
 <div class="alert alert-info">
 	<center>
 		<h3 style="margin: 10px">
-			Hasil Perhitungan Kalori Yang Dibutuhkan Oleh Balita Adalah <b><?php echo number_format($hasil_akhir,2); ?> KKAL</b>
+		Hasil Hitung Kecanduan Bermain Game Online Fuzzy TSUKAMOTO Adalah <b><?php echo number_format($hasil_akhir,2); ?> Candu</b>
 		</h3>
 	</center>
 </div>

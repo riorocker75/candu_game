@@ -3,7 +3,7 @@
 <div class="container">
 	<div class="panel">
 		<div class="panel-heading text-center">
-			<h3>Hitung Kebutuhan Kalori Balita Menggunakan Fuzzy TSK</h3>
+			<h3>Hasil Hitung Kecanduan Bermain Game Online Fuzzy TSUKAMOTO</h3>
 		</div>
 		<div class="panel-body">
 
