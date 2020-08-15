@@ -138,8 +138,6 @@
 													<!-- <br/>
 													nilai a:<?php echo $a;?> || nilai b: <?php echo $b;?> <br/>
 													<br> -->
-
-
 												<!-- disini tulis logika rumus nya -->
 												<!-- variabel start tidak pernah -->
 												<?php
@@ -208,11 +206,61 @@
 													<?php 
 													$himpunan[$variab][$lingui] = 1;
 													?>
-													nilai vv: <?php echo $nilai[$x]?>
-													<br/>
+													nilai input: <?php echo $nilai[$x]?>
+													<!-- <br/>
 													nilai a:<?php echo $a;?> || nilai b: <?php echo $b;?> <br/>
-													Rumus terkadang<br/>
-												
+													Rumus terkadang<br/> -->
+													<!-- disini tulis logika rumus nya -->
+													<!-- variabel start terkadang -->
+													<?php
+														$td0=0;
+														$na_1= $a-1;
+														$nb1= $b+1;
+														$na1=$a+1;
+													?>
+												<!-- bandingkan dulu nilai atas antara 3 dan 2 -->
+												<br>
+												<!-- ini pengecekan jika nilai atas 3 -->
+													<?php if($b > 2){ ?>
+														<?php if($nilai[$x] <= $na_1 || $nilai[$x] > $b){
+																$rumusTD0=$td0;
+																echo "x <= $na_1 atau x >= $b";
+																echo "<br><b>Hasil = $rumusTD0</b>";
+																
+															}elseif($nilai[$x] == $na_1 ){
+																$rumusTD1=($nilai[$x] - $na_1) / ($a - $na_1);
+																echo "$na_1 <= x <= $a";
+																echo "<br>($nilai[$x] -  $na_1) / ($a - $na_1)";
+																echo "<br><b>Hasil = $rumusTD1</b>";
+																
+															}elseif($a <= $nilai[$x] || $nilai[$x] <= $nb1){
+																$rumusTD2=($nb1 - $nilai[$x]) / ($nb1 - $a);
+																echo "$nb1 <= x <= $a";
+																echo "<br><b>Hasil = $rumusTD2</b>";
+															}
+														?>
+
+
+													<?php }else{?>	
+													<!-- ini pengecekan jika nilai atas 2 -->
+													<?php if($nilai[$x] <= $na_1 || $nilai[$x] >= $b){
+																$rumusTD0=$td0;
+																echo "x <= $na_1 atau x >= $b";
+																echo "<br><b>Hasil = $rumusTD0</b>";
+															}elseif($na_1 <= $nilai[$x] || $nilai[$x] <= $a){
+																$rumusTD1=($nilai[$x] - $na_1) / ($a - $na_1);
+																echo "$na_1 <= x <= $a";
+																echo "<br>($nilai[$x] -  $na_1) / ($a - $na_1)";
+																echo "<br><b>Hasil = $rumusTD1</b>";
+																
+															}elseif($a <= $nilai[$x] || $nilai[$x] <= $nb1){
+																$rumusTD2=($na1 - $nilai[$x]) / ($na1 - $na_1);
+																echo "$na_1 <= x <= $nb1";
+																echo "<br><b>Hasil = $rumusTD2</b>";
+															}
+														?>
+
+													<?php } ?>
 												</td>
 												
 
@@ -226,7 +274,7 @@
 													<?php 
 													$himpunan[$variab][$lingui] = 1;
 													?>
-													nilai vv: <?php echo $nilai[$x]?>
+													nilai input: <?php echo $nilai[$x]?>
 													<br/>
 													nilai a:<?php echo $a;?> || nilai b: <?php echo $b;?> <br/>
 													Sering<br/>
