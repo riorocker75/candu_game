@@ -135,10 +135,11 @@
 													$himpunan[$variab][$lingui] = 1;
 													?>
 													nilai input: <?php echo $nilai[$x]?>
-													<br/>
+													<!-- <br/>
 													nilai a:<?php echo $a;?> || nilai b: <?php echo $b;?> <br/>
-													Rumus Tidak Pernah<br/>
-													<br>
+													<br> -->
+
+
 												<!-- disini tulis logika rumus nya -->
 												<!-- variabel start tidak pernah -->
 												<?php
@@ -147,20 +148,26 @@
 													$nb1= $b+1;
 												?>
 												<!-- bandingkan dulu nilai atas antara 3 dan 2 -->
-
+												<br>
 													<!-- ini pengecekan jika nilai atas 3 -->
 													<?php if($b > 2){ ?>
 														<?php if($nilai[$x] <= 1){
 																$rumusTP1=$tp1;
-																echo $rumusTP1;
+																echo "x <= 1";
+																echo "<br><b>Hasil = $rumusTP1</b>";
 																
 															}elseif($nilai[$x] <= $nb1){
 																$rumusTP2=($nb1 - $nilai[$x]) / ($nb1 - 1);
-																echo $rumusTP2;
+																echo "1 <= x <= $nb1";
+																echo "<br>($nb1 - $nilai[$x] ) / ($nb1 - 1)";
+																echo "<br><b>Hasil = $rumusTP2</b>";
+
 																
 															}elseif($nilai[$x] >= $nb1){
 																$rumusTP0=$tp0;
-																echo $rumusTP0;
+																echo "x >= $nb1";
+																echo "<br><b>Hasil = $rumusTP0</b>";
+
 															}
 														?>
 
@@ -169,24 +176,27 @@
 													<!-- ini pengecekan jika nilai atas 2 -->
 													<?php if($nilai[$x] <= 1){
 																$rumusTP1=$tp1;
-																echo $rumusTP1;
-																
+																echo "x <= 1";
+																echo "<br><b>Hasil = $rumusTP1</b>";
 															}elseif($nilai[$x] <= $nb1){
-																$rumusTP2=($nb1 - $nilai[$x]) / ($nb1 - 10);
-																echo $rumusTP2;
+																$rumusTP2=($nb1 - $nilai[$x]) / (10 - $nb1);
+																echo "1 <= x <= $nb1";
+																echo "<br>($nb1 - $nilai[$x] ) / (10 - $nb1)";
+																echo "<br><b>Hasil = $rumusTP2</b>";
 																
 															}elseif($nilai[$x] >= $nb1){
 																$rumusTP0=$tp0;
-																echo $rumusTP0;
+																echo "x >= $nb1";
+																echo "<br><b>Hasil = $rumusTP0</b>";
 															}
 														?>
 
 													<?php } ?>
 												</td>
+												<!-- <td width="1%">=</td>
 												<td></td>
-												<td></td>
-												<td></td>
-												<td width="1%"></td>
+												<td width="1%">=</td>
+												<td width="1%"></td> -->
 
 											</tr>
  										
@@ -204,10 +214,7 @@
 													Rumus terkadang<br/>
 												
 												</td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td width="1%"></td>
+												
 
 											</tr>
 
@@ -225,10 +232,7 @@
 													Sering<br/>
 												
 												</td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td width="1%"></td>
+											
 
 											</tr>
 
