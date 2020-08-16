@@ -131,11 +131,10 @@
 												<td width="14%"><?php echo $l['vl_nama']; ?></td>
 												<td width="1%">=</td>
 												<td>
-													<?php 
-													$himpunan[$variab][$lingui] = 1;
-													?>
+												
 													nilai input: <?php echo $nilai[$x]?>
-													<!-- <br/>
+													<br/>
+													<!--
 													nilai a:<?php echo $a;?> || nilai b: <?php echo $b;?> <br/>
 													<br> -->
 												<!-- disini tulis logika rumus nya -->
@@ -151,11 +150,13 @@
 													<?php if($b > 2){ ?>
 														<?php if($nilai[$x] <= 1){
 																$rumusTP1=$tp1;
+																$himpunan[$variab][$lingui] = $rumusTP1;
 																echo "x <= 1";
 																echo "<br><b>Hasil = $rumusTP1</b>";
 																
 															}elseif($nilai[$x] <= $nb1){
 																$rumusTP2=($nb1 - $nilai[$x]) / ($nb1 - 1);
+																$himpunan[$variab][$lingui] = $rumusTP2;
 																echo "1 <= x <= $nb1";
 																echo "<br>($nb1 - $nilai[$x] ) / ($nb1 - 1)";
 																echo "<br><b>Hasil = $rumusTP2</b>";
@@ -163,6 +164,7 @@
 																
 															}elseif($nilai[$x] >= $nb1){
 																$rumusTP0=$tp0;
+																$himpunan[$variab][$lingui] = $rumusTP0;
 																echo "x >= $nb1";
 																echo "<br><b>Hasil = $rumusTP0</b>";
 
@@ -174,16 +176,19 @@
 													<!-- ini pengecekan jika nilai atas 2 -->
 													<?php if($nilai[$x] <= 1){
 																$rumusTP1=$tp1;
+																$himpunan[$variab][$lingui] = $rumusTP1;
 																echo "x <= 1";
 																echo "<br><b>Hasil = $rumusTP1</b>";
 															}elseif($nilai[$x] <= $nb1){
 																$rumusTP2=($nb1 - $nilai[$x]) / (10 - $nb1);
+																$himpunan[$variab][$lingui] = $rumusTP2;
 																echo "1 <= x <= $nb1";
 																echo "<br>($nb1 - $nilai[$x] ) / (10 - $nb1)";
 																echo "<br><b>Hasil = $rumusTP2</b>";
 																
 															}elseif($nilai[$x] >= $nb1){
 																$rumusTP0=$tp0;
+																$himpunan[$variab][$lingui] = $rumusTP0;
 																echo "x >= $nb1";
 																echo "<br><b>Hasil = $rumusTP0</b>";
 															}
@@ -203,13 +208,10 @@
 												<td width="14%"><?php echo $l['vl_nama']; ?></td>
 												<td width="1%">=</td>
 												<td>
-													<?php 
-													$himpunan[$variab][$lingui] = 1;
-													?>
+												
 													nilai input: <?php echo $nilai[$x]?>
-													<!-- <br/>
-													nilai a:<?php echo $a;?> || nilai b: <?php echo $b;?> <br/>
-													Rumus terkadang<br/> -->
+													 <br/>
+													<!-- nilai a:<?php echo $a;?> || nilai b: <?php echo $b;?> <br/> -->
 													<!-- disini tulis logika rumus nya -->
 													<!-- variabel start terkadang -->
 													<?php
@@ -217,25 +219,33 @@
 														$na_1= $a-1;
 														$nb1= $b+1;
 														$na1=$a+1;
+													// echo "nilai na1=$na1<br>";
 													?>
+
 												<!-- bandingkan dulu nilai atas antara 3 dan 2 -->
 												<br>
 												<!-- ini pengecekan jika nilai atas 3 -->
-													<?php if($b > 2){ ?>
+													<?php if($b > 4){ ?>
 														<?php if($nilai[$x] <= $na_1 || $nilai[$x] > $b){
 																$rumusTD0=$td0;
+																$himpunan[$variab][$lingui] = $rumusTD0;
 																echo "x <= $na_1 atau x >= $b";
 																echo "<br><b>Hasil = $rumusTD0</b>";
 																
 															}elseif($nilai[$x] == $na_1 ){
 																$rumusTD1=($nilai[$x] - $na_1) / ($a - $na_1);
+																$himpunan[$variab][$lingui] = $rumusTD1;
+
 																echo "$na_1 <= x <= $a";
 																echo "<br>($nilai[$x] -  $na_1) / ($a - $na_1)";
 																echo "<br><b>Hasil = $rumusTD1</b>";
 																
 															}elseif($a <= $nilai[$x] || $nilai[$x] <= $nb1){
 																$rumusTD2=($nb1 - $nilai[$x]) / ($nb1 - $a);
+																$himpunan[$variab][$lingui] = $rumusTD2;
+
 																echo "$nb1 <= x <= $a";
+																echo "<br>($nb1 - $nilai[$x]) / ($nb1 - $a)";
 																echo "<br><b>Hasil = $rumusTD2</b>";
 															}
 														?>
@@ -243,19 +253,26 @@
 
 													<?php }else{?>	
 													<!-- ini pengecekan jika nilai atas 2 -->
-													<?php if($nilai[$x] <= $na_1 || $nilai[$x] >= $b){
+													<?php if($nilai[$x] <= $na_1 || $nilai[$x] > $b){
 																$rumusTD0=$td0;
+																$himpunan[$variab][$lingui] = $rumusTD0;
+
 																echo "x <= $na_1 atau x >= $b";
 																echo "<br><b>Hasil = $rumusTD0</b>";
-															}elseif($na_1 <= $nilai[$x] || $nilai[$x] <= $a){
-																$rumusTD1=($nilai[$x] - $na_1) / ($a - $na_1);
+															}elseif($nilai[$x] == $a){
+																$rumusTD1=($nilai[$x] - 2) / ($a - 2);
+																$himpunan[$variab][$lingui] = $rumusTD1;
+
 																echo "$na_1 <= x <= $a";
 																echo "<br>($nilai[$x] -  $na_1) / ($a - $na_1)";
 																echo "<br><b>Hasil = $rumusTD1</b>";
 																
-															}elseif($a <= $nilai[$x] || $nilai[$x] <= $nb1){
-																$rumusTD2=($na1 - $nilai[$x]) / ($na1 - $na_1);
-																echo "$na_1 <= x <= $nb1";
+															}elseif($na1 <= $nilai[$x] || $nilai[$x] <= $nb1){
+																$rumusTD2=($nb1 - $nilai[$x]) / ($nb1 - $a);
+																$himpunan[$variab][$lingui] = $rumusTD2;
+
+																echo "$na1 <= x <= $nb1";
+																echo "<br>($nb1 - $nilai[$x]) / ($nb1 - $a)";
 																echo "<br><b>Hasil = $rumusTD2</b>";
 															}
 														?>
@@ -271,14 +288,73 @@
 												<td width="14%"><?php echo $l['vl_nama']; ?></td>
 												<td width="1%">=</td>
 												<td>
-													<?php 
-													$himpunan[$variab][$lingui] = 1;
-													?>
+												
 													nilai input: <?php echo $nilai[$x]?>
 													<br/>
-													nilai a:<?php echo $a;?> || nilai b: <?php echo $b;?> <br/>
-													Sering<br/>
+													<!-- nilai a:<?php echo $a;?> || nilai b: <?php echo $b;?> <br/> -->
 												
+											
+													<!-- disini tulis logika rumus nya -->
+													<!-- variabel start sering -->
+													<?php
+														$ts0=0;
+														
+													?>
+												<!-- bandingkan dulu nilai atas antara 3 dan 2 -->
+												<br>
+												<!-- ini pengecekan jika nilai atas 3 -->
+												
+													<?php if($b > 6){ ?>
+														<?php if($nilai[$x] <= 4 ){
+																$rumusSR0=$ts0;
+																$himpunan[$variab][$lingui] = $rumusSR0;
+																echo "x <= 4";
+																echo "<br><b>Hasil = $rumusSR0</b>";
+																
+															}elseif(4 <= $nilai[$x] || $nilai[$x] <= $b ){
+																$rumusSR1=($nilai[$x] - 4) / ($b - 4);
+																$himpunan[$variab][$lingui] = $rumusSR1;
+
+																echo "$na_1 <= x <= $a";
+																echo "<br>(4 - $nilai[$x]) / ($b - 4)";
+																echo "<br><b>Hasil = $rumusSR1</b>";
+																
+															}elseif($nilai[$x] >= $b){
+																$rumusSR2=1;
+																$himpunan[$variab][$lingui] = $rumusSR2;
+
+																echo "x >= $b";
+																echo "<br><b>Hasil = $rumusSR2</b>";
+															}
+														?>
+
+
+												<?php }else{?>	
+												<!-- ini pengecekan jika nilai atas 2 -->
+													<?php  if($nilai[$x] <= 3 ){
+																$rumusSR0=$ts0;
+																$himpunan[$variab][$lingui] = $rumusSR0;
+																echo "x <= 3";
+																echo "<br><b>Hasil = $rumusSR0</b>";
+																
+															}elseif(3 <= $nilai[$x] || $nilai[$x] <= $b ){
+																$rumusSR1=($nilai[$x] - 3) / ($b - 3);
+																$himpunan[$variab][$lingui] = $rumusSR1;
+
+																echo "$na_1 <= x <= $a";
+																echo "<br>(4 - $nilai[$x]) / ($b - 3)";
+																echo "<br><b>Hasil = $rumusSR1</b>";
+																
+															}elseif($nilai[$x] >= $b){
+																$rumusSR2=1;
+																$himpunan[$variab][$lingui] = $rumusSR2;
+
+																echo "x >= $b";
+																echo "<br><b>Hasil = $rumusSR2</b>";
+															}
+														?>
+
+												<?php } ?>
 												</td>
 											
 
@@ -324,12 +400,12 @@
 		<th width="1%">IF</th>
 		<th>Anteseden</th>
 		<th width="1%">THEN</th>
-		<th>Nilai Kalori</th>
+		<th>Kecanduan Level</th>
 	</tr>
 
 	<?php 
 	$no = 1;
-	$data = mysqli_query($koneksi,"select distinct rule_kelompok,rule_nilai from rule");
+	$data = mysqli_query($koneksi,"select distinct rule_kelompok,rule_outli from rule");
 
 	while($d=mysqli_fetch_array($data)){
 		?>
@@ -359,7 +435,13 @@
 
 			</td>
 			<td>THEN</td>
-			<td><?php echo $d['rule_nilai']; ?></td>
+			<td><?php 
+				// echo $d['rule_outli']; 
+				$ol_id=$d['rule_outli']; 
+				$data_level = mysqli_query($koneksi,"select * from output_linguistik where ol_id='$ol_id' ");
+				$level = mysqli_fetch_array($data_level);
+				echo $level['ol_nama'];
+			?></td>
 		</tr>
 		<?php 
 	}
@@ -383,7 +465,7 @@
 	$arr_rule = array();
 	$arr_nilai = array();
 
-	$data = mysqli_query($koneksi,"select distinct rule_kelompok,rule_nilai from rule");
+	$data = mysqli_query($koneksi,"select distinct rule_kelompok,rule_outli from rule");
 	while($d=mysqli_fetch_array($data)){
 		$nox = $no++;
 		?>
