@@ -517,11 +517,44 @@
 					$array_rule = 0;
 					?>
 					<?php 
-					echo $nilai_himpunan_minimal . " x " . $d['rule_nilai'] . " = ";
+						$ol_id1=$d['rule_outli']; 
+						$data_level1 = mysqli_query($koneksi,"select * from output_linguistik where ol_id='$ol_id1' ");
+						$level1 = mysqli_fetch_array($data_level1);
+					?>
+					<?php 
+					// echo $nilai_himpunan_minimal . " x " . $level1['ol_nama'];
+					 
 
-// nilai z
-					$nilai_z = $nilai_himpunan_minimal*$d['rule_nilai'];
-					echo $nilai_z;
+				/*
+				---------------------
+					nilai z
+				---------------------	
+				*/ 
+					// $nilai_z = $nilai_himpunan_minimal*$d['rule_nilai'];
+					// echo $nilai_z;
+
+					// cek dulu dia berat,ringan tidak kecanduan
+					if($d['rule_outli'] == "1"){
+					  // bagian rumus berat z
+					  $nilai_z= 5 - ($nilai_himpunan_minimal * 4);
+					  echo "Rumus<br>";
+					  echo "5 - ($nilai_himpunan_minimal * 4)<br>";
+					  echo "<b>Hasil: $nilai_z</b>";
+					}elseif($d['rule_outli'] == "2"){
+					  // bagian rumus ringan z
+
+					  $nilai_z= 4 + ($nilai_himpunan_minimal * 1);
+					  echo "Rumus<br>";
+					  echo "4 + ($nilai_himpunan_minimal * 1)<br>";
+					  echo "<b>Hasil: $nilai_z</b>";
+
+					}elseif($d['rule_outli'] == "4"){
+					  // bagian rumus tidak kecanduan z
+					  $nilai_z= 5 + ($nilai_himpunan_minimal * 5);
+					  echo "Rumus<br>";
+					  echo "5 + ($nilai_himpunan_minimal * 5)<br>";
+					  echo "<b>Hasil: $nilai_z</b>";
+					}
 
 
 					$arr_nilai[$nox]['z'] = $nilai_z;
@@ -578,8 +611,8 @@
 							<td>
 								<?php
 								for($m = 1;$m <= count($arr_nilai);$m++){
-									$hasil_z += $arr_nilai[$m]['z'];
-
+									$hasil_z +=$arr_nilai[$m]['a'] * $arr_nilai[$m]['z'] ;
+									// $hasil_a += $arr_nilai[$m]['a'];
 									if($m == count($arr_nilai)){
 										$tambah = "";
 									}else{
@@ -593,9 +626,9 @@
 						<tr>
 							<td style="border-top: 1px solid black">
 								<?php
+								$arr_nilai[$nox]['a'];
 								for($m = 1;$m <= count($arr_nilai);$m++){
 									$hasil_a += $arr_nilai[$m]['a'];
-
 									if($m == count($arr_nilai)){
 										$tambah = "";
 									}else{
@@ -620,7 +653,7 @@
 								$hasil_a = 0;
 								for($m = 1;$m <= count($arr_nilai);$m++){
 									// jumlahkan nilai z
-									$hasil_z += $arr_nilai[$m]['z'];
+									$hasil_z += $arr_nilai[$m]['a'] * $arr_nilai[$m]['z'];
 
 									// jumlahkan nilai a
 									$hasil_a += $arr_nilai[$m]['a'];
@@ -645,7 +678,7 @@
 				<td>
 					<span style="color: blue;font-weight: bold;">
 						<?php 
-						echo number_format($hasil_akhir,2) . " kkal";
+						echo number_format($hasil_akhir,2) ;
 						?>
 					</span>
 				</td>
