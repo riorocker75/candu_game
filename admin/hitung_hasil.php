@@ -316,7 +316,7 @@
 																$himpunan[$variab][$lingui] = $rumusSR1;
 
 																echo "$na_1 <= x <= $a";
-																echo "<br>(4 - $nilai[$x]) / ($b - 4)";
+																echo "<br>($nilai[$x] -4) / ($b - 4)";
 																echo "<br><b>Hasil = $rumusSR1</b>";
 																
 															}elseif($nilai[$x] >= $b){

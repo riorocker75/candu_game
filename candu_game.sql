@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 14, 2020 at 01:12 PM
+-- Generation Time: Aug 16, 2020 at 11:49 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -39,26 +39,6 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id`, `username`, `password`) VALUES
 (1, 'admin', '0192023a7bbd73250516f069df18b500');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `makanan`
---
-
-CREATE TABLE `makanan` (
-  `makanan_id` int(11) NOT NULL,
-  `makanan_umur` text NOT NULL,
-  `makanan` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `makanan`
---
-
-INSERT INTO `makanan` (`makanan_id`, `makanan_umur`, `makanan`) VALUES
-(1, '0 - 10 Bulan', 'ASI, Bubur Kedelai'),
-(2, '10 - 15 Bulan', 'Nasi, Roti gandum, Susu');
 
 -- --------------------------------------------------------
 
@@ -483,12 +463,6 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `makanan`
---
-ALTER TABLE `makanan`
-  ADD PRIMARY KEY (`makanan_id`);
-
---
 -- Indexes for table `output`
 --
 ALTER TABLE `output`
@@ -527,12 +501,6 @@ ALTER TABLE `variabel_linguistik`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `makanan`
---
-ALTER TABLE `makanan`
-  MODIFY `makanan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `output`
