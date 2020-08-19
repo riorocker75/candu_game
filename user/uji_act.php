@@ -10,19 +10,33 @@
 	<div class="panel">
 		<div class="panel-heading text-center">
 			<h4>Hasil Hitung Kecanduan Bermain Game Online Fuzzy TSUKAMOTO</h4>
-		</div>
+        </div>
+        
 		<div class="panel-body">
-
+       
 			<?php 
 			include '../koneksi.php';
 			$variabel = $_POST['variabel'];
 			$nama_variabel = $_POST['nama_variabel'];
-			$nilai = $_POST['nilai'];
+            $nilai = $_POST['nilai'];
+            $kode_user="U-".rand(1000,9999);
+            // ini untuk simpan ke database 
+            for($y=0;$y<count($variabel);$y++){
+                mysqli_query($koneksi,"insert into uji values(null,'$kode_user','$variabel[$y]','$nilai[$y]')");
+
+            }    
+
 			?>
 
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2">
-
+                <div class="alert alert-info">
+                    <center>
+                        <h4 style="margin: 10px">
+                        Simpan Kode Unik ini <b><?php echo $kode_user?></b>
+                        </h4>
+                    </center>
+                </div>
 					<h5>Inputan</h5>
 					<table class="table table-bordered">
 						<?php 
@@ -51,38 +65,6 @@
 			<p class="text-muted">Hasil Perhitungan Manual Kecanduan Bermain Game Online Fuzzy TSUKAMOTO</p>
 		</div>
 		<div class="panel-body">
-
-          <!-- 
-			<h4>Rumus</h4>
-
-			<table class="table table-bordered">
-				<tr>
-					<th>himpunan[x]</th>
-					<td>
-						<table class="table table-bordered" style="margin-bottom:0px">
-							<tr>
-								<td>1</td>
-								<td>x < a atau x > c</td>
-							</tr>
-							<tr>
-								<td>( x - a ) / ( b - a )</td>
-								<td>a <= x <= b</td>
-							</tr>
-							<tr>
-								<td>( c - x ) / ( c - b )</td>
-								<td>b <= x <= c</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-			</table>
-
-
-
-			<br/>
-			<hr>
-			<br/> -->
-
 
 			<table class="table table-bordered">
 
@@ -196,11 +178,7 @@
 
 													<?php } ?>
 												</td>
-												<!-- <td width="1%">=</td>
-												<td></td>
-												<td width="1%">=</td>
-												<td width="1%"></td> -->
-
+										
 											</tr>
  										
  									<?php	break;case "Terkadang": ?>
@@ -589,16 +567,7 @@
 		<?php 
 		$hasil_z = 0;
 		$hasil_a = 0;
-		// for($m = 1;$m <= count($arr_nilai);$m++){
-		// // jumlahkan nilai z
-		// 	$hasil_z += $arr_nilai[$m]['z'];
 
-		// // jumlahkan nilai a
-		// 	$hasil_a += $arr_nilai[$m]['a'];
-
-		// }
-		// $hasil_akhir = $hasil_z/$hasil_a;
-		// echo number_format($hasil_akhir,2) . " kkal";
 		?>
 
 		<table>
@@ -678,13 +647,21 @@
 				<td>
 					<span style="color: blue;font-weight: bold;">
 						<?php 
-						echo number_format($hasil_akhir,2) ;
+                        echo number_format($hasil_akhir,2) ;
+                        
 						?>
 					</span>
 				</td>
 			</tr>
+              <!-- ini untuk hasil user-->
+              <?php
+              $nama=$_POST['nama'];
+              $umur=$_POST['umur'];
 
-
+              mysqli_query($koneksi,"insert into user values(null,'$kode_user','$nama','$umur','$hasil_akhir')");
+              
+              ?>                  
+              <!-- end user simpan -->
 
 		</table>
 
@@ -708,6 +685,8 @@
 		</h3>
 	</center>
 </div>
+
+
 
 
 <br/>

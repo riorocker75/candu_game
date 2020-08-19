@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2020 at 11:49 AM
+-- Generation Time: Aug 19, 2020 at 11:57 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -376,6 +376,33 @@ INSERT INTO `rule` (`rule_id`, `rule_kelompok`, `rule_variabel`, `rule_linguisti
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `uji`
+--
+
+CREATE TABLE `uji` (
+  `id` bigint(20) NOT NULL,
+  `kode_user` text NOT NULL,
+  `variabel_id` text NOT NULL,
+  `nilai_input` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` bigint(20) NOT NULL,
+  `kode_user` text NOT NULL,
+  `nama` text NOT NULL,
+  `umur` text NOT NULL,
+  `hasil` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `variabel`
 --
 
@@ -481,6 +508,18 @@ ALTER TABLE `rule`
   ADD PRIMARY KEY (`rule_id`);
 
 --
+-- Indexes for table `uji`
+--
+ALTER TABLE `uji`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `variabel`
 --
 ALTER TABLE `variabel`
@@ -519,6 +558,18 @@ ALTER TABLE `output_linguistik`
 --
 ALTER TABLE `rule`
   MODIFY `rule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=377;
+
+--
+-- AUTO_INCREMENT for table `uji`
+--
+ALTER TABLE `uji`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `variabel`

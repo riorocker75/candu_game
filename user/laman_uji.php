@@ -5,25 +5,35 @@
 		display: none;
 	}
 </style>
+	<?php 
+	 session_start();
+		include '../koneksi.php';
+		$variabel = $_POST['variabel'];
+		$nama_variabel = $_POST['nama_variabel'];
+		$nilai = $_POST['nilai'];
 
+		$kode_user=$_SESSION['kode_user'];
+		$data_user=mysqli_query($koneksi,"select * from user where kode_user='$kode_user'");
+		$dus=mysqli_fetch_array($data_user);
+	?>
 <div class="container">
-	<div class="panel">
+<div class="panel">
 		<div class="panel-heading text-center">
-			<h4>Hasil Hitung Kecanduan Bermain Game Online Fuzzy TSUKAMOTO</h4>
-		</div>
+		<div class="alert alert-info">
+		<center>
+			<h3 style="margin: 10px">
+			Hasil Hitung Kecanduan Bermain Game Online Anda Adalah <b><?php echo number_format($dus['hasil'],2); ?> </b>
+			</h3>
+		</center>
+</div>
+        </div>
+        
 		<div class="panel-body">
-
-			<?php 
-			include '../koneksi.php';
-			$variabel = $_POST['variabel'];
-			$nama_variabel = $_POST['nama_variabel'];
-			$nilai = $_POST['nilai'];
-			?>
-
+       
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2">
-
-					<h5>Inputan</h5>
+          
+				
 					<table class="table table-bordered">
 						<?php 
 						for($x=0;$x<count($variabel);$x++){
@@ -44,45 +54,12 @@
 	</div>
 
 
-
-	<div class="panel pencarian_manual">
+	<div class="panel">
 		<div class="panel-heading">
 			<h3>Hasil Perhitungan</h3>
 			<p class="text-muted">Hasil Perhitungan Manual Kecanduan Bermain Game Online Fuzzy TSUKAMOTO</p>
 		</div>
 		<div class="panel-body">
-
-          <!-- 
-			<h4>Rumus</h4>
-
-			<table class="table table-bordered">
-				<tr>
-					<th>himpunan[x]</th>
-					<td>
-						<table class="table table-bordered" style="margin-bottom:0px">
-							<tr>
-								<td>1</td>
-								<td>x < a atau x > c</td>
-							</tr>
-							<tr>
-								<td>( x - a ) / ( b - a )</td>
-								<td>a <= x <= b</td>
-							</tr>
-							<tr>
-								<td>( c - x ) / ( c - b )</td>
-								<td>b <= x <= c</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-			</table>
-
-
-
-			<br/>
-			<hr>
-			<br/> -->
-
 
 			<table class="table table-bordered">
 
@@ -196,11 +173,7 @@
 
 													<?php } ?>
 												</td>
-												<!-- <td width="1%">=</td>
-												<td></td>
-												<td width="1%">=</td>
-												<td width="1%"></td> -->
-
+										
 											</tr>
  										
  									<?php	break;case "Terkadang": ?>
@@ -589,16 +562,7 @@
 		<?php 
 		$hasil_z = 0;
 		$hasil_a = 0;
-		// for($m = 1;$m <= count($arr_nilai);$m++){
-		// // jumlahkan nilai z
-		// 	$hasil_z += $arr_nilai[$m]['z'];
 
-		// // jumlahkan nilai a
-		// 	$hasil_a += $arr_nilai[$m]['a'];
-
-		// }
-		// $hasil_akhir = $hasil_z/$hasil_a;
-		// echo number_format($hasil_akhir,2) . " kkal";
 		?>
 
 		<table>
@@ -678,13 +642,13 @@
 				<td>
 					<span style="color: blue;font-weight: bold;">
 						<?php 
-						echo number_format($hasil_akhir,2) ;
+                        echo number_format($hasil_akhir,2) ;
+                        
 						?>
 					</span>
 				</td>
 			</tr>
-
-
+     
 
 		</table>
 
@@ -710,14 +674,11 @@
 </div>
 
 
+
+
 <br/>
 <br/>
 
-<center>
-	
-	<button class="btn_pencarian_manual btn btn-primary">Pembuktian / Pencarian Manual</button>
-
-</center>
 
 
 <br/>
@@ -728,12 +689,6 @@
 </div>
 
 
-<script>
-	$(document).ready(function(){
-		$('.btn_pencarian_manual').on("click",function(){
-			$('.pencarian_manual').toggle();
-		});
-	});
-</script>
+
 
 <?php include 'footer.php'; ?>
