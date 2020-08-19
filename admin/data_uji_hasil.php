@@ -6,13 +6,12 @@
 	}
 </style>
 	<?php 
-	 session_start();
 		include '../koneksi.php';
 		$variabel = $_POST['variabel'];
 		$nama_variabel = $_POST['nama_variabel'];
 		$nilai = $_POST['nilai'];
 
-		$kode_user=$_SESSION['kode_user'];
+		$kode_user= $_POST['kode_user'];
 		$data_user=mysqli_query($koneksi,"select * from user where kode_user='$kode_user'");
 		$dus=mysqli_fetch_array($data_user);
 	?>
@@ -22,7 +21,7 @@
 		<div class="alert alert-info">
 		<center>
 			<h3 style="margin: 10px">
-			Hasil Hitung Kecanduan Bermain Game Online Anda Adalah <b><?php echo number_format($dus['hasil'],2); ?> </b>
+			Hasil Hitung Kecanduan Bermain Game Online <?php echo $dus['nama']; ?> Adalah <b><?php echo number_format($dus['hasil'],2); ?> </b>
 			</h3>
 		</center>
 </div>
@@ -668,7 +667,7 @@
 <div class="alert alert-info">
 	<center>
 		<h3 style="margin: 10px">
-		Hasil Hitung Kecanduan Bermain Game Online Fuzzy TSUKAMOTO Adalah <b><?php echo number_format($hasil_akhir,2); ?></b>
+		Hasil Hitung Kecanduan Bermain Game Online Fuzzy TSUKAMOTO Adalah <b><?php echo number_format($hasil_akhir,2); ?> </b>
 		</h3>
 	</center>
 </div>

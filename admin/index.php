@@ -21,7 +21,7 @@ include '../koneksi.php';
 		<div class="panel-body">
 			
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-3">
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<h1>
@@ -39,7 +39,7 @@ include '../koneksi.php';
 					</div>				
 				</div>		
 
-				<div class="col-md-4">
+				<div class="col-md-3">
 					<div class="panel panel-warning">
 						<div class="panel-heading">
 							<h1>
@@ -56,7 +56,7 @@ include '../koneksi.php';
 					</div>				
 				</div>		
 
-				<div class="col-md-4">
+				<div class="col-md-3">
 					<div class="panel panel-info">
 						<div class="panel-heading">
 							<h1>
@@ -71,7 +71,25 @@ include '../koneksi.php';
 							Jumlah Rule
 						</div>						
 					</div>				
-				</div>				
+				</div>	
+				
+				
+				<div class="col-md-3">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h1>
+								<i class="glyphicon glyphicon-bookmark"></i> 
+								<span class="pull-right">
+									<?php 
+									$uji = mysqli_query($koneksi,"select distinct kode_user from uji");
+									echo mysqli_num_rows($uji);
+									?>
+								</span>
+							</h1>
+							Jumlah Data Uji
+						</div>						
+					</div>				
+				</div>	
 
 			</div>		
 

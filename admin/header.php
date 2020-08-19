@@ -12,8 +12,13 @@ if($_SESSION['status']!="login"){
 	<title>APLIKASI PENDETEKSI KECANDUAN BERMAIN GAME ONLINE MENGGUNAKAN FUZZY TSUKAMOTO BERBASIS WEB</title>
 
 	<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
-	<script type="text/javascript" src="../assets/js/jquery.js"></script>
-	<script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+	<link rel="stylesheet" type="text/css" href="../assets/datatables/datatable.css">
+
+	<script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../assets/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="../assets/datatables/datatables.min.js"></script>
+
+	
 
 </head>
 <body style="background: #f0f0f0">
@@ -42,10 +47,11 @@ if($_SESSION['status']!="login"){
 							<li><a href="v_output.php"><i class="glyphicon glyphicon-folder-open"></i> &nbsp; Output </a></li>
 
 							<li><a href="rule.php"><i class="glyphicon glyphicon-folder-open"></i> &nbsp; Rule / Konsekuen</a></li>
-							<li><a href="makanan.php"><i class="glyphicon glyphicon-folder-open"></i> &nbsp; Makanan</a></li>
 						</ul>
 					</li>
-					<li><a href="hitung.php"><i class="glyphicon glyphicon-retweet"></i> &nbsp; HITUNG</a></li>
+					<!-- <li><a href="hitung.php"><i class="glyphicon glyphicon-retweet"></i> &nbsp; HITUNG</a></li> -->
+					<li><a href="data_uji.php"><i class="glyphicon glyphicon-bookmark"></i> &nbsp; DATA UJI</a></li>
+
 					<li><a href="ganti_password.php"><i class="glyphicon glyphicon-lock"></i> &nbsp; GANTI PASSWORD</a></li>
 					<li><a href="logout.php"><i class="glyphicon glyphicon-log-out"></i> &nbsp; LOG OUT</a></li>
 				</ul>				
