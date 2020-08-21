@@ -22,7 +22,7 @@
 		<div class="alert alert-info">
 		<center>
 			<h3 style="margin: 10px">
-			Hasil Hitung Kecanduan Bermain Game Online Anda Adalah <b><?php echo number_format($dus['hasil'],2); ?> </b>
+			Hasil Hitung Kecanduan Bermain Game Online Anda Adalah <b><?php echo $dus['hasil']; ?> </b>
 			</h3>
 		</center>
 </div>
@@ -668,7 +668,7 @@
 <div class="alert alert-info">
 	<center>
 		<h3 style="margin: 10px">
-		Hasil Hitung Kecanduan Bermain Game Online Fuzzy TSUKAMOTO Adalah <b><?php echo number_format($hasil_akhir,2); ?></b>
+		Hasil Hitung Kecanduan Bermain Game Online Fuzzy TSUKAMOTO Adalah <b><?php echo $hasil_akhir; ?></b>
 		</h3>
 	</center>
 </div>

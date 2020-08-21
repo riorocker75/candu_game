@@ -21,7 +21,7 @@
 		<div class="alert alert-info">
 		<center>
 			<h3 style="margin: 10px">
-			Hasil Hitung Kecanduan Bermain Game Online <?php echo $dus['nama']; ?> Adalah <b><?php echo number_format($dus['hasil'],2); ?> </b>
+			Hasil Hitung Kecanduan Bermain Game Online <?php echo $dus['nama']; ?> Adalah <b><?php echo $dus['hasil']; ?> </b>
 			</h3>
 		</center>
 </div>

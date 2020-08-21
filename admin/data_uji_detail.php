@@ -12,7 +12,7 @@
             <div class="alert alert-info">
                     <center>
                         <h3 style="margin: 10px">
-                        Hasil Hitung Kecanduan Bermain Game Online <?php echo $dus['nama'];?> Adalah <b><?php echo number_format($dus['hasil'],2); ?> </b>
+                        Hasil Hitung Kecanduan Bermain Game Online <?php echo $dus['nama'];?> Adalah <b><?php echo $dus['hasil']; ?> </b>
                         </h3>
                 </center>
             </div>
@@ -57,6 +57,8 @@
 
 							?>
 							<div class="form-group row" style="display:none">
+							<!-- <div class="form-group row" > -->
+
 								<label class="col-lg-12"><?php echo $v['variabel_nama']; ?></label>
 								<div class="form-group col-lg-4">
 									<input type="hidden" class="form-control" name="variabel[]" value="<?php echo $v['variabel_id']; ?>">
@@ -64,10 +66,10 @@
                                     
                                     <?php 
                                      $input_vid=$v['variabel_id'];
-                                     $nilai_input = mysqli_query($koneksi,"select * from uji where variabel_id='$input_vid'");
+                                     $nilai_input = mysqli_query($koneksi,"select * from uji where variabel_id='$input_vid' and kode_user='$kode_user'");
                                      $niv = mysqli_fetch_array($nilai_input);
                                     ?>
-									<input type="number" class="form-control" name="nilai[]" value="<?php echo $niv['nilai_input'] ?>" required="required" min="<?php echo $d['batas_awal'] ?>" max="<?php echo $d['batas_akhir']; ?>">
+									<input type="number" class="form-control" name="nilai[]" value="<?php echo $niv['nilai_input'] ?>"  min="<?php echo $d['batas_awal'] ?>" max="<?php echo $d['batas_akhir']; ?>">
 								</div>
                             
 							</div>	
@@ -76,7 +78,7 @@
 						
 						<br/>
                         <center>
-                        <button class="btn_pencarian_manual btn btn-primary" type="submit">Selengkapnya Pembuktian Manual</button>
+                        <button class=" btn btn-primary" type="submit">Selengkapnya Pembuktian Manual</button>
                         </center>
 					</form>
 				</div>

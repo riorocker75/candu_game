@@ -15,7 +15,7 @@ if($_SESSION['status']!="login"){
 	<link rel="stylesheet" type="text/css" href="../assets/datatables/datatable.css">
 
 	<script type="text/javascript" src="../assets/js/jquery.min.js"></script>
-	<script type="text/javascript" src="../assets/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="../assets/js/bootstrap.js"></script>
 	<script type="text/javascript" src="../assets/datatables/datatables.min.js"></script>
 
 	

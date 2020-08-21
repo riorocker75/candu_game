@@ -13,7 +13,7 @@
             <div class="alert alert-info">
                     <center>
                         <h3 style="margin: 10px">
-                        Hasil Hitung Kecanduan Bermain Game Online Anda Adalah <b><?php echo number_format($dus['hasil'],2); ?> </b>
+                        Hasil Hitung Kecanduan Bermain Game Online Anda Adalah <b><?php echo $dus['hasil']; ?> </b>
                         </h3>
                 </center>
             </div>
@@ -65,7 +65,7 @@
                                     
                                     <?php 
                                      $input_vid=$v['variabel_id'];
-                                     $nilai_input = mysqli_query($koneksi,"select * from uji where variabel_id='$input_vid'");
+                                     $nilai_input = mysqli_query($koneksi,"select * from uji where variabel_id='$input_vid' and kode_user='$kode_user'");
                                      $niv = mysqli_fetch_array($nilai_input);
                                     ?>
 									<input type="number" class="form-control" name="nilai[]" value="<?php echo $niv['nilai_input'] ?>" required="required" min="<?php echo $d['batas_awal'] ?>" max="<?php echo $d['batas_akhir']; ?>">
