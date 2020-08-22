@@ -1,28 +1,59 @@
-<?php 
-// mengaktifkan session php
-session_start();
+<!DOCTYPE html>
+<html>
+<head>
+	<title>APLIKASI PERHITUNGAN KECUKUPAN KALORI HARIAN BALITA MENGGUNAKAN  METODE FUZZY TSK(TAKAGI-SUGENO-KANG) BERBASIS WEB</title>
 
-// menghubungkan dengan koneksi
-include 'koneksi.php';
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+	<script type="text/javascript" src="assets/js/jquery.js"></script>
+	<script type="text/javascript" src="assets/js/bootstrap.js"></script>
 
-// menangkap data yang dikirim dari form
-$username = $_POST['username'];
-$password = md5($_POST['password']);
-// fungsi md5 di atas untuk enkripsi kedalam bentuk md5
+</head>
+<body>
+	<br/>
+	<br/>
+	<br/>
 
-// menyeleksi data admin dengan username dan password yang sesuai
-$data = mysqli_query($koneksi,"select * from admin where username='$username' and password='$password'");
+	<center>
+		<h3 style="text-transform: uppercase">APLIKASI PERHITUNGAN <br/> Pendeteksi Kecanduan Bermain Game Online  <br/> MENGGUNAKAN  <b>Fuzzy Tsukamoto </b> <br/> BERBASIS WEB</h3>
+	</center>
 
-// menghitung jumlah data yang ditemukan
-$cek = mysqli_num_rows($data);
+	<br/>
+	<br/>
+	
+	<div class="container">
+		<div class="col-md-4 col-md-offset-4">
+			<?php 
+			if(isset($_GET['pesan'])){
+				if($_GET['pesan'] == "gagal"){
+					echo "<div class='alert alert-danger'>Login gagal! username dan password salah!</div>";
+				}else if($_GET['pesan'] == "logout"){
+					echo "<div class='alert alert-info'>Anda telah berhasil logout</div>";
+				}else if($_GET['pesan'] == "belum_login"){
+					echo "<div class='alert alert-danger'>Anda harus login untuk mengakses halaman admin</div>";
+				}
+			}
+			?>			
+			
+			<form action="login_act.php" method="post">
+				<div class="panel">
+					<br/>
+					<div class="panel-body">
+						<div class="form-group">
+							<label>Username</label>
+							<input type="text" class="form-control" name="username">
+						</div>
+						<div class="form-group">
+							<label>Password</label>
+							<input type="password" class="form-control" name="password">
+						</div>	
 
-// cek jika username dan password yang di input di temukan, buat session dan alihkan halaman ke halaman admin(folder admin),
-// jika tidak, alihkan kembali ke halaman depan sambil mengirim pesan gagal
-if($cek > 0){
-	$_SESSION['username'] = $username;
-	$_SESSION['status'] = "login";
-	header("location:admin/index.php");
-}else{
-	header("location:index.php?pesan=gagal");
-}
-?>
+						<input type="submit" class="btn btn-primary btn-block" value="LOG IN">				
+					</div>
+					<br/>
+				</div>
+			</form>
+
+		</div>
+	</div>
+</body>
+</html>
