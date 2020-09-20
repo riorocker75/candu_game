@@ -13,7 +13,18 @@
             <div class="alert alert-info">
                     <center>
                         <h3 style="margin: 10px">
-                        Hasil Hitung Kecanduan Bermain Game Online Anda Adalah <b><?php echo $dus['hasil']; ?> </b>
+                        Hasil Hitung Kecanduan Bermain Game Online Anda Adalah <b><?php echo number_format($dus['hasil'],2); ?> 
+                            <?php 
+                                if($dus['hasil'] <= 3){
+                                    echo "Tidak Kecanduan";
+                                }elseif($dus['hasil'] <= 6){
+                                    echo "Kecanduan Ringan";
+                                }elseif($dus['hasil'] > 6 ){
+                                    echo "Kecanduan Berat";
+                                }
+
+                             ?>
+                    </b>
                         </h3>
                 </center>
             </div>

@@ -22,7 +22,18 @@
 		<div class="alert alert-info">
 		<center>
 			<h3 style="margin: 10px">
-			Hasil Hitung Kecanduan Bermain Game Online Anda Adalah <b><?php echo $dus['hasil']; ?> </b>
+			Hasil Hitung Kecanduan Bermain Game Online Anda Adalah <b><?php echo number_format($dus['hasil'],2); ?> 
+			<?php 
+			if($hasil_akhir <= 3){
+				echo "Tidak Kecanduan";
+			}elseif($hasil_akhir <= 6){
+				echo "Kecanduan Ringan";
+			}elseif($hasil_akhir > 6 ){
+				echo "Kecanduan Berat";
+			}
+
+		 ?>
+			</b>
 			</h3>
 		</center>
 </div>
@@ -596,23 +607,64 @@
 <div class="alert alert-info">
 	<center>
 		<h3 style="margin: 10px">
-		Hasil Hitung Kecanduan Bermain Game Online Fuzzy TSUKAMOTO Adalah <b><?php echo $hasil_akhir; ?></b>
+		Hasil Hitung Kecanduan Bermain Game Online Fuzzy TSUKAMOTO Adalah <b><?php echo $hasil_akhir; ?>
+			<?php 
+			if($hasil_akhir <= 3){
+				echo "Tidak Kecanduan";
+			}elseif($hasil_akhir <= 6){
+				echo "Kecanduan Ringan";
+			}elseif($hasil_akhir > 6 ){
+				echo "Kecanduan Berat";
+			}
+
+		 ?>	
+
+		</b>
 		</h3>
 	</center>
 </div>
 
 
 
+<div class="alert alert-info">
+		<p style="text-align: center;font-weight: 600;font-size: 20px">Solusi</p>
+		<h3 style="margin: 10px;font-size:16px!important;text-align: left;line-height: 1.5 ">
+		<?php 
+		$nasihat= mysqli_query($koneksi,"select * from output_linguistik");
+		while($l = mysqli_fetch_array($nasihat)){
+			if($hasil_akhir <= 3){
+				echo "
+					•	Melakukan pencegahan agar tidak mengalami kecanduan Game Online<br>
+					•	Meningkatkan pemahaman tentang bahaya kecanduan bermain Game Online<br>
+				";
+			}elseif($hasil_akhir <= 6){
+				echo "
+					•	Orang terdekat memberikan nasihat<br>
+					•	Melakukan kegiatan positif<br>
+					•	Mengembangkan potensi minat dan bakat<br>
+					•	Kurangi frekuensi bermain Game Online secara bertahap<br>
+					•	Fokus terhadap pendidikan atau pekerjaan yang ditekuni<br>
+
+				";
+			
+			}elseif($hasil_akhir > 6){
+			echo "•	Didampingi Psikolog atau Dokter Spesialis Jiwa untuk menjalani terapi <br>
+				•	Orang terdekat harus mendammpingi atau memantau seluruh kegiatan yang dilakukan selama proses penyembuhan<br>
+				•	Rancang kembali target hidup anda<br>
+				•	Bertekat untuk sembuh dari Kecanduan Game Online<br>
+				•	Berdo’a mendekatkan diri kepada Allah SWT.<br>
+				";
+			}
+		}		
+		 ?>
+			
+		</b>
+		</h3>
+	
+</div>
 
 <br/>
-<br/>
 
-
-
-<br/>
-<br/>
-<br/>
-<br/>
 <br/>
 </div>
 
