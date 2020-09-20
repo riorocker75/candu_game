@@ -460,7 +460,7 @@
 
 
 					$arr_nilai[$nox]['z'] = $nilai_z;
-					$arr_nilai[$nox]['a'] = min($arr_rule);
+					$arr_nilai[$nox]['a'] = min($hs);
 					?>
 
 				</td>
