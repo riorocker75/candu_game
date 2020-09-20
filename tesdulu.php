@@ -28,6 +28,15 @@ $hitung =array(
 echo max($hitung);
 
 ?>
+<br>
+nilai min:
+<?php
+$hitung =array(
+	0.5,0.2,0.2,0.2,0.2,0
+	);
+echo min($hitung);
+
+?>
 <script>
 	$(document).ready(function(){
 	var kartu= "keluar";

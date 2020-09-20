@@ -1,7 +1,7 @@
 <?php 
 
 // nama host, Username, password dan nama database
-$koneksi = mysqli_connect("localhost","root","","candu_game");
+$koneksi = mysqli_connect("localhost","root","","canx");
 
 // Periksa Koneksi
 if (mysqli_connect_errno()){

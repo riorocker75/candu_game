@@ -400,9 +400,10 @@
 			<td>
 				( &nbsp;
 					<?php
+					$tes=array();
 					$kelompok = $d['rule_kelompok'];
 					$rule = mysqli_query($koneksi,"select * from rule,variabel,variabel_linguistik where rule_kelompok='$kelompok' and rule_variabel=variabel_id and rule_linguistik=vl_id");
-					while($r=mysqli_fetch_array($rule)){
+					while($r=mysqli_fetch_array($rule)){ 
 
 						$rr = $himpunan[$r['rule_variabel']][$r['rule_linguistik']];
 
@@ -411,6 +412,7 @@
 
 						if(mysqli_num_rows($cek) > 0){
 							$tampil_rr = "<b>" . $himpunan[$r['rule_variabel']][$r['rule_linguistik']] . "</b> &cap; ";
+							$tes_rr= $himpunan[$r['rule_variabel']][$r['rule_linguistik']];
 
 						}else{
 							$tampil_rr = "<b>" . $himpunan[$r['rule_variabel']][$r['rule_linguistik']] . "</b>";
@@ -418,13 +420,27 @@
 						}
 
 						echo $tampil_rr;
+
 						array_push($arr_rule, $rr);
-					}
+
+						array_push($tes, $tes_rr);
+						$sc=array($himpunan[$r['rule_variabel']][$r['rule_linguistik']]);
+
 					?>
+					
+
+
+					<?php } ?>
 					&nbsp; )
+					<?php 
+						$hs=array();
+						foreach ($tes as $kr ){
+							$hs[] = $kr;
+						}
+					?>
 
 					=
-					<?php echo min($arr_rule); ?>
+					<?php echo min($hs) ?>
 				</td>
 			</tr>
 
@@ -436,7 +452,7 @@
 				<td>
 
 					<?php 
-					$nilai_himpunan_minimal = min($arr_rule);
+					$nilai_himpunan_minimal = min($hs);
 
 					$array_rule = 0;
 					?>
@@ -462,7 +478,7 @@
 					  // bagian rumus berat z
 					  $nilai_z= 5 + ($nilai_himpunan_minimal * 5);
 					  echo "Rumus<br>";
-					  echo "5 - ($nilai_himpunan_minimal * 5)<br>";
+					  echo "5 + ($nilai_himpunan_minimal * 5)<br>";
 					  echo "<b>Hasil: $nilai_z</b>";
 					}elseif($d['rule_outli'] == "2"){
 					  // bagian rumus ringan z
