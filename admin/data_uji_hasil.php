@@ -75,6 +75,7 @@
 
 				<?php 
 				$himpunan = array();
+				$kumpul_input = array();
 				for($x=0;$x<count($variabel);$x++){
 
 					?>
@@ -137,12 +138,16 @@
 													<?php if($nilai[$x] <= 1){
 																$rumusTP1=$tp1;
 																$himpunan[$variab][$lingui] = $rumusTP1;
+																$kumpul_input[$variab][$lingui]=$nilai[$x];
+
 																echo "x <= 1";
 																echo "<br><b>Hasil = $rumusTP1</b>";
 																
 															}elseif($nilai[$x] <= 4){
 																$rumusTP2=(4 - $nilai[$x]) / (4 - 1);
 																$himpunan[$variab][$lingui] = $rumusTP2;
+																$kumpul_input[$variab][$lingui]=$nilai[$x];
+
 																echo "1 <= x <= $nb1";
 																echo "<br>(4 - $nilai[$x] ) / (4 - 1)";
 																echo "<br><b>Hasil = $rumusTP2</b>";
@@ -151,6 +156,8 @@
 															}elseif($nilai[$x] >= 4){
 																$rumusTP0=$tp0;
 																$himpunan[$variab][$lingui] = $rumusTP0;
+																$kumpul_input[$variab][$lingui]=$nilai[$x];
+
 																echo "x >= 4";
 																echo "<br><b>Hasil = $rumusTP0</b>";
 
@@ -185,12 +192,16 @@
 													<?php if($nilai[$x] <= 3 || $nilai[$x] >= 6){
 																$rumusTD0=$td0;
 																$himpunan[$variab][$lingui] = $rumusTD0;
+																$kumpul_input[$variab][$lingui]=$nilai[$x];
+
 																echo "x <= 3 atau x >= 6";
 																echo "<br><b>Hasil = $rumusTD0</b>";
 																
 															}elseif($nilai[$x] == 4){
 																$rumusTD1=($nilai[$x] - 3) / (4 - 3);
 																$himpunan[$variab][$lingui] = $rumusTD1;
+																$kumpul_input[$variab][$lingui]=$nilai[$x];
+
 
 																echo "3 <= x <= 4";
 																echo "<br>($nilai[$x] -  3) / (4 - 3)";
@@ -199,6 +210,7 @@
 															}elseif(4 <= $nilai[$x] || $nilai[$x] <= 6){
 																$rumusTD2=(6 - $nilai[$x]) / (6 - 4);
 																$himpunan[$variab][$lingui] = $rumusTD2;
+																$kumpul_input[$variab][$lingui]=$nilai[$x];
 
 																echo "4 <= x <= 6";
 																echo "<br>(6 - $nilai[$x]) / (6 - 4)";
@@ -234,12 +246,16 @@
 													<?php if($nilai[$x] <= 4 ){
 																$rumusSR0=$ts0;
 																$himpunan[$variab][$lingui] = $rumusSR0;
+																$kumpul_input[$variab][$lingui]=$nilai[$x];
+
 																echo "x <= 4";
 																echo "<br><b>Hasil = $rumusSR0</b>";
 																
 															}elseif(4 <= $nilai[$x] || $nilai[$x] <= 9 ){
 																$rumusSR1=($nilai[$x] - 4) / (9 - 4);
 																$himpunan[$variab][$lingui] = $rumusSR1;
+																$kumpul_input[$variab][$lingui]=$nilai[$x];
+
 
 																echo "4 <= x <= 9";
 																echo "<br>($nilai[$x] - 4) / (9 - 4)";
@@ -248,6 +264,8 @@
 															}elseif($nilai[$x] >= 9){
 																$rumusSR2=1;
 																$himpunan[$variab][$lingui] = $rumusSR2;
+																$kumpul_input[$variab][$lingui]=$nilai[$x];
+
 
 																echo "x >= $b";
 																echo "<br><b>Hasil = $rumusSR2</b>";
@@ -374,6 +392,8 @@
 			<td>
 				( &nbsp;
 					<?php
+					
+					$tes_xx=array();
 					$tes=array();
 					$kelompok = $d['rule_kelompok'];
 					$rule = mysqli_query($koneksi,"select * from rule,variabel,variabel_linguistik where rule_kelompok='$kelompok' and rule_variabel=variabel_id and rule_linguistik=vl_id");
@@ -387,16 +407,19 @@
 						if(mysqli_num_rows($cek) > 0){
 							$tampil_rr = "<b>" . $himpunan[$r['rule_variabel']][$r['rule_linguistik']] . "</b> &cap; ";
 							$tes_rr= $himpunan[$r['rule_variabel']][$r['rule_linguistik']];
+							$ii=$kumpul_input[$r['rule_variabel']][$r['rule_linguistik']];
 
 						}else{
 							$tampil_rr = "<b>" . $himpunan[$r['rule_variabel']][$r['rule_linguistik']] . "</b>";
 							$tes_rr= $himpunan[$r['rule_variabel']][$r['rule_linguistik']];
+							$ii=$kumpul_input[$r['rule_variabel']][$r['rule_linguistik']];
 
 						}
 
 						echo $tampil_rr;
 						array_push($arr_rule, $rr);
 						array_push($tes, $tes_rr);
+						array_push($tes_xx,$ii);
 
 					}
 					?>
@@ -407,6 +430,26 @@
 						foreach ($tes as $kr ){
 							$hs[] = $kr;
 						}
+
+						$hz=array();
+						$hk=array();
+
+						// ini untuk nampilin input
+						foreach ($tes_xx as $ku ){
+							$hk[] = $ku;
+						}
+						// print_r($hk);
+
+						// ini percobaan dari hs
+						foreach ($tes as $ki ){
+							// ini isi dari hs sebenarnya
+							$hz[] = $ki;
+							// $hz[]=$gabungs;
+						}
+						// echo $fg;
+						$gabungs=array_combine($hz,$hk);
+						ksort($gabungs);
+						$cuax=reset($gabungs);
 					?>
 
 					=
@@ -460,10 +503,23 @@
 
 					}elseif($d['rule_outli'] == "4"){
 					  // bagian rumus tidak kecanduan z
-					  $nilai_z= 0;
-					  echo "Rumus<br>";
-					  echo "0<br>";
-					  echo "<b>Hasil: $nilai_z</b>";
+						if($cuax <= 1){
+							$nilai_z= 1;	
+							 echo "Rumus x <= 1<br>";
+							 echo "<b>Hasil: $nilai_z</b>";
+						}elseif($cuax <= 5){
+							$nilai_z = 5 - ($nilai_himpunan_minimal * 4);
+							 echo "Rumus 1 <= x <= 5<br>";
+							 echo "Rumus 5 - ($nilai_himpunan_minimal * 4)<br>";
+							 
+							 echo "<b>Hasil: $nilai_z</b>";
+						}elseif($cuax > 5){
+					 		 $nilai_z= 0;
+							 echo "Rumus x > 5<br>";
+							 echo "<b>Hasil: $nilai_z</b>";
+						}
+					  // $nilai_z= 0;
+					 
 					}
 
 
