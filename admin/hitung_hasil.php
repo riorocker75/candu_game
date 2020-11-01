@@ -496,6 +496,9 @@
 						// antara nilai input dan nilai hasil
 						
 						// echo $cuax;
+						// yang echo lihat nilai input yg sudah disortir
+
+						// ini print array yg sudah disortir dari ksort
 						// print_r($gabungs);
 					
 					?>
